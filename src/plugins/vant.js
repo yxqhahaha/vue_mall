@@ -1,5 +1,6 @@
-import Vue from 'vue'
-import { Button } from 'vant'
-import 'vant/lib/index.css'
-
-Vue.use(Button)
+import Vue from "vue";
+import "vant/lib/index.css";
+import { Button, Tab, Tabs } from "vant";
+Vue.use(Button);
+Vue.use(Tab);
+Vue.use(Tabs);
