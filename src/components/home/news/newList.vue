@@ -1,6 +1,6 @@
 <template>
   <div>
-    <van-loading type="spinner" color="#1989fa" v-show="!show" />
+    <van-loading type="spinner" color="#1989fa" v-show="!show" class="spinner" />
     <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
       <div v-show="show">
         <div class="box" v-for="item in list" :key="item.id">
@@ -36,7 +36,7 @@ export default {
     return {
       list: [],
       isLoading: true,
-      show: false
+      show: false,
     }
   },
   created() {
@@ -44,28 +44,27 @@ export default {
     this.getList()
   },
   methods: {
-    //获取数据
+    // 获取数据
     async getList() {
       const { data: res } = await this.$http.get('/api/getnewslist')
       console.log(res.message);
       this.list = res.message
     },
-   
-    //刷新
-    onRefresh() {
+    // 刷新
+    onRefresh () {
       setTimeout(() => {
+        this.$toast('刷新成功');
         this.isLoading = false
         this.show = true
         this.getList()
+        
       }, 1000);
     },
-    //跳转页面
-    skip(id) {
+    // 跳转页面
+    skip (id) {
       // this.$emit('id', id)
       // this.$router.push(`/news/detail/${id}`)
       this.$router.push({ path: '/news/detail', query: { id } })
-
-
     }
   },
   mounted() {
@@ -78,6 +77,13 @@ export default {
 * {
   margin: 0;
   padding: 0;
+}
+.spinner {
+  margin-top: 40px;
+  text-align: center;
+}
+.van-pull-refresh {
+  margin-top: 40px;
 }
 .box {
   height: 47px;
