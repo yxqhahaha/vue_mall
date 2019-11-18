@@ -2,8 +2,8 @@
   <div>
     <!--  head  -->
     <div class="head">
-      <a @click="back">返回</a>
-      <h5>移动商城</h5>
+      <a @click="$router.go(-1)">返回</a>
+      <span>移动商城</span>
     </div>
     <div class="goodsImg">
       <!--  商品图片展示  -->
@@ -44,10 +44,9 @@
       <div class="goods_params_btns">
         <van-button plain type="primary" @click="toGoodsDesc">图文介绍</van-button>
         <van-button plain type="danger">商品评论</van-button>
-
       </div>
     </div>
-i
+
   </div>
 </template>
 
@@ -101,7 +100,8 @@ export default {
       this.$router.push(`/goodsdesc/${id}`)
     },
     back () {
-      console.log('点击了返回')
+      // console.log('点击了返回')
+      this.$router.go(-1)
     }
   },
   computed: {
@@ -120,6 +120,7 @@ export default {
   .head {
     color: #fff;
     height: 40px;
+    line-height: 40px;
     text-align: center;
     background-color: #1989fa;
     a {
@@ -127,7 +128,7 @@ export default {
       position: absolute;
       left: 10px;
     }
-    h5 {
+    span {
       margin: 0;
       font-size: 14px;
     }

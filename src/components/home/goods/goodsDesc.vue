@@ -1,5 +1,10 @@
 <template>
   <div>
+    <!--  head  -->
+    <div class="head">
+      <a @click="$router.go(-1)">返回</a>
+      <span>移动商城</span>
+    </div>
     <div class="title">
       <h4>{{this.goodsDescData.title}}</h4>
       <hr />
@@ -40,6 +45,22 @@ export default {
 </script>ccc
 
 <style scoped>
+  .head {
+    color: #fff;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background-color: #1989fa;
+    a {
+      font-size: 14px;
+      position: absolute;
+      left: 10px;
+    }
+    span {
+      margin: 0;
+      font-size: 14px;
+    }
+  }
   .title {
     margin: 10px 0;
     text-align: center;
