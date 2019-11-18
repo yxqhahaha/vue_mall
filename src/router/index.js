@@ -7,6 +7,8 @@ import photoList from '../components/home/photo/photoList.vue'
 import member from '../components/member/member.vue'
 import shopcar from '../components/shopcar/shopcar.vue'
 import search from '../components/search/search.vue'
+import goodsDetail from '../components/home/goods/goodsDetail'
+import goodsDesc from '../components/home/goods/goodsDesc'
 
 Vue.use(VueRouter)
 
@@ -28,7 +30,17 @@ const routes = [
   {
     path: '/goods/list',
     name: 'goodsList',
-    component: goodsList
+    component: goodsList,
+  },
+  {
+    path: '/goods/detail/:id',
+    name: 'goodsDetail',
+    component: goodsDetail,
+  },
+  {
+    path: '/goodsdesc/:id',
+    name: 'goodsDesc',
+    component: goodsDesc,
   },
   {
     path: '/photo/list',

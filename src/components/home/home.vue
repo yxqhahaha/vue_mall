@@ -1,27 +1,21 @@
 <template>
-    <div>
-        Home
-        <goodsList />
-        <!-- <newList /> -->
-        <photoList />
-    </div>
+  <div>
+    <h3>welcome</h3>
+    <router-link to="/goods/list">goodslist</router-link>
+  </div>
 </template>
 
 <script>
-import goodsList from './goods/goodsList'
-// import newList from './news/newList'
-import photoList from './photo/photoList'
-
+import GoodsList from './goods/goodsList'
 export default {
-  name: 'home',
-  components: {
-    goodsList,
-    // newList,
-    photoList
-  }
+  name: 'Home',
+
+  data (){
+    return {}
+  },
 }
 </script>
 
-<style lang="less" scoped>
+<style scoped>
 
 </style>
