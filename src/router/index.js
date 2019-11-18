@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+
 import home from '../components/home/home.vue'
 import newList from '../components/home/news/newList.vue'
 import goodsList from '../components/home/goods/goodsList.vue'
@@ -7,6 +8,8 @@ import photoList from '../components/home/photo/photoList.vue'
 import member from '../components/member/member.vue'
 import shopcar from '../components/shopcar/shopcar.vue'
 import search from '../components/search/search.vue'
+import Detail from '../components/home/news/Detail.vue'
+
 import photoInfo from '../components/home/photo/photoInfo.vue'
 import addgoods from '../components/home/goods/addgoods.vue'
 Vue.use(VueRouter)
@@ -55,6 +58,11 @@ const routes = [
     path: '/search',
     name: 'search',
     component: search
+  },
+  {
+    path: '/news/detail',
+    name: 'detail',
+    component: Detail
   },
   {
     path: '/photo/Info/:id',
