@@ -100,7 +100,12 @@ export default {
 };
 </script>
 <style lang="less" scoped>
+* {
+  margin: 0;
+  padding: 0;
+}
 .ph_main {
+  margin-top: 20px;
   padding: 10px 10px;
   .title {
     text-align: center;

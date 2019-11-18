@@ -1,29 +1,25 @@
 <template>
   <div id="app">
     <!-- <Home /> -->
-    <router-view />
+        <headers></headers>
+        <router-view></router-view>
+        <footers></footers>
   </div>
 </template>
 
 <script>
 // import Home from '@/views/Home.vue'
 // import home from '@/components/home/home.vue'
+import headers from './components/home/header'
+import footers from './components/home/footer'
 export default {
-  name: 'app'
-  // components: {
-  //   // Home,
-  //   home
-  // }
+  name: 'app',
+  components: {
+    headers: headers,
+    footers: footers
+  }
 }
 </script>
 
-<style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="less" scoped>
 </style>
