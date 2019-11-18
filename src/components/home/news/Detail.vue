@@ -14,7 +14,7 @@
       <div class="base">
         <h4>发表评论</h4>
         <div>
-          <van-field class="text" v-model="content">
+          <van-field class="text" v-model="content" placeholder="请输入留言">
           </van-field>
           <van-button class="btn" type="info" @click="addClick">发表评论</van-button>
           <div v-for="(item, index) in feedList" :key="index">
@@ -77,7 +77,7 @@ export default {
     },
     // 点击提交评论信息
     async addClick () {
-      const { data: res } = await this.$http.post(`/api/postcomment/${this.newId}`, { artid: this.newId, content: this.content })
+      await this.$http.post(`/api/postcomment/${this.newId}`, { artid: this.newId, content: this.content })
       this.add()
       this.newFeed()
       this.content = ''
@@ -98,6 +98,7 @@ export default {
   padding: 0;
 }
 .content {
+  margin-top: 40px;
   padding: 0 10px;
 }
 .tit {
@@ -144,7 +145,7 @@ export default {
   line-height: 35px;
   text-indent: 2em;
   font-size: 12px;
-  margin-top: 10px 0;
+  margin-top: 10px;
   text-align: left;
 }
 

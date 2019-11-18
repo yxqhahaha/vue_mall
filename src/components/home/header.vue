@@ -1,37 +1,40 @@
 <template>
    <div class="title">
+
       <i @click="back" v-text="textBack"></i>
       <span>
         移动商城
       </span>
     </div>
+
 </template>
 
 <script>
 export default {
-    data(){
-      return{
-        nowURL:'',
-        textBack: '返回'
-      }
-    },
-    methods: {
-      back(){
-        this.$router.go(-1)
-      }
-    },
-    created() {
-      this.nowURL=window.location.hash
-      console.log(this.nowURL);
-    },
-    updated() {
-      this.nowURL=window.location.hash
-      console.log(this.nowURL);
-    },
-    computed: {
-    },
-    component: {
+  data () {
+    return {
+      nowURL: '',
+      textBack: '返回'
     }
+  },
+  methods: {
+    back () {
+      this.$router.go(-1)
+    }
+  },
+  created () {
+    this.nowURL = window.location.hash
+    console.log(this.nowURL)
+  },
+  updated () {
+    this.nowURL = window.location.hash
+    console.log(this.nowURL)
+  },
+  computed: {
+  },
+  component: {
+  }
+
 }
 </script>
 
