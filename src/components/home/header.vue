@@ -1,49 +1,38 @@
 <template>
-    
-       <div class="title">
-            <i @click="back">返回</i>
-            <span>
-              黑马程序员.vant
-            </span>
-          </div>
-    
+   <div class="title">
+        <i @click="back">返回</i>
+        <span>
+          黑马程序员.vant
+        </span>
+      </div>
 </template>
 
 <script>
 export default {
-    data(){
-        return{
-      nowURL:''
-
-        }
-    },
-    methods: {
-      back(){
-        this.$router.go(-1)
-      }
-        
-    },
-    created() {
-          this.nowURL=window.location.hash
-          console.log(this.nowURL);
-          
-
-          
-    },
-    updated() {
-          this.nowURL=window.location.hash
-          console.log(this.nowURL);
-          
-
-          
-    },
-
-    computed: {
-        
-    },
-    component: {
-
+  data () {
+    return {
+      nowURL: ''
     }
+  },
+  methods: {
+    back () {
+      this.$router.go(-1)
+    }
+  },
+  created () {
+    this.nowURL = window.location.hash
+    console.log(this.nowURL)
+  },
+  updated () {
+    this.nowURL = window.location.hash
+    console.log(this.nowURL)
+  },
+
+  computed: {
+  },
+  component: {
+
+  }
 }
 </script>
 
@@ -61,9 +50,8 @@ export default {
   z-index: 999;
 }
 .title i {
- 
   position: absolute;
   left: 20px;
   font-style: normal;
-} 
+}
 </style>
