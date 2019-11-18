@@ -23,6 +23,7 @@
       </van-row>
     </div>
   </div>
+
 </template>
 
 <script>
@@ -66,24 +67,5 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.main {
-  padding: 10px 10px;
-  .imgBox {
-    margin-top: 10px;
-    position: relative;
-    img {
-      width: 100%;
-    }
-    .text {
-      position: absolute;
-      bottom: 0;
-      font-size: 12px;
-      left: 0;
-      width: 100%;
-      background: rgba(0, 0, 0, 0.4);
-      color: #fff;
-      height: 75px;
-    }
-  }
-}
+
 </style>

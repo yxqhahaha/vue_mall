@@ -116,19 +116,4 @@ export default {
   font-weight: 700;
 }
 
-.titleTop {
-  height: 30px;
-}
-.titleTop-l {
-  float: left;
-  line-height: 30px;
-  font-size: 12px;
-  color: #226aff;
-}
-.titleTop-r {
-  float: right;
-  line-height: 30px;
-  font-size: 12px;
-  color: #226aff;
-}
 </style>

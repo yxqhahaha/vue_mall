@@ -1,26 +1,26 @@
 <template>
-
-  <div class="title">
-    <span @click="back">
-      <i v-if="nowURL === '#/home'"></i>
-      <i v-else>返回</i>
-    </span>
-    <span>
-      黑马程序员.vant
-    </span>
+  <div>
+    <div class="title">
+      <span @click="back">
+        <i v-if="nowURL === '#/home'"></i>
+        <i v-else>返回</i>
+      </span>
+      <span>
+        黑马程序员.vant
+      </span>
+    </div>
   </div>
-
 </template>
 
 <script>
 export default {
-  data () {
+  data() {
     return {
-      nowURL: ''  
+      nowURL: ''
     }
   },
   methods: {
-    back() {     
+    back() {
       this.$router.go(-1)
     }
   },
