@@ -18,6 +18,7 @@ export default {
   },
   methods: {
     addGoods () {
+      this.$notify({ type: 'success', duration: 800, message: '添加成功' })
       this.$http.post('/api/addproduct', { name: this.value }).then(this.toSearch)
     },
     toSearch () {
