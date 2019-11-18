@@ -1,7 +1,5 @@
 <template>
-
   <div class="home">
-    <headers></headers>
     <img alt="Vue logo" src="../assets/logo.png">
     <h1>hello post-chen</h1>
     <van-button type="default">默认按钮</van-button>
@@ -16,11 +14,10 @@
 
 <script>
 // @ is an alias to /src
-import header from './header.vue'
+
 export default {
   name: 'home',
   components: {
-    headers:header
   },
   methods: {
     getInfo () {
