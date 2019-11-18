@@ -6,8 +6,14 @@
 </template>
 
 <script>
+// import headers from '../home/header'
+// import footers from '../home/footer'
 export default {
-  name: 'member'
+  name: 'member',
+  // components: {
+  //   headers:headers,
+  //   footers:footers
+  // }
 }
 </script>
 

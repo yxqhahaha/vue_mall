@@ -1,6 +1,6 @@
 <template>
   <div>
-    <van-loading type="spinner" color="#1989fa" v-show="!show" />
+    <van-loading type="spinner" color="#1989fa" v-show="!show" class="spinner" />
     <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
       <div v-show="show">
         <div class="box" v-for="item in list" :key="item.id">
@@ -36,7 +36,7 @@ export default {
     return {
       list: [],
       isLoading: true,
-      show: false
+      show: false,
     }
   },
   created() {
@@ -54,9 +54,11 @@ export default {
     //刷新
     onRefresh() {
       setTimeout(() => {
+        this.$toast('刷新成功');
         this.isLoading = false
         this.show = true
         this.getList()
+        
       }, 1000);
     },
     //跳转页面
@@ -78,6 +80,13 @@ export default {
 * {
   margin: 0;
   padding: 0;
+}
+.spinner {
+  margin-top: 40px;
+  text-align: center;
+}
+.van-pull-refresh {
+  margin-top: 40px;
 }
 .box {
   height: 47px;
