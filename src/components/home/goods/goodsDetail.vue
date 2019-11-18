@@ -26,7 +26,7 @@
       </div>
       <div class="btns">
         <van-button class="van-button van-button--info van-button--normal" size="small">立即购买</van-button>
-        <van-button class="van-button van-button--danger van-button--normal" size="small">加入购物车</van-button>
+        <van-button class="van-button van-button--danger van-button--normal" size="small" @click="addShopCar">加入购物车</van-button>
       </div>
     </div>
     <!--  商品参数  -->
@@ -39,7 +39,7 @@
       </div>
       <div class="params_btns">
         <van-button plain type="primary" @click="toGoodsDesc">图文介绍</van-button>
-        <van-button plain type="danger">商品评论</van-button>
+        <van-button plain type="danger" @click="toGoodsComment">商品评论</van-button>
       </div>
     </div>
 
@@ -51,8 +51,11 @@ export default {
   name: 'detail',
   data () {
     return {
+      // 商品信息
       goodsInfo: {},
+      // 商品介绍页面的轮播图
       goodsSwipe: [],
+      // 购买数量的最大值最小值
       value: 1,
       max: 1
     }
@@ -91,12 +94,26 @@ export default {
         })
       }
     },
+    // 加入购物车
+    async addShopCar () {
+      // 获取store->state中购物车数组的值
+      // 将当前商品的id 传入数组中
+      this.$store.state.shopCarList.push(this.getId)
+    },
+    // 跳转到商品图文介绍页面
     toGoodsDesc () {
       let id = this.getId
       this.$router.push(`/goodsdesc/${id}`)
+    },
+    // 跳转到商品评论
+    toGoodsComment () {
+      let id = this.getId
+      // this.$router.push(`/news/detail/${id}`)
+      this.$router.push({ path: '/goodscomments/', query: { id } })
     }
   },
   computed: {
+    // 获取id
     getId () {
       // 根据当前url来获取id
       let id = this.$route.path.split('/')
@@ -109,7 +126,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-
   .goodsImg {
     height: 200px;
     border: 1px solid #ccc;

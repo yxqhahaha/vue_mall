@@ -44,28 +44,25 @@ export default {
     this.getList()
   },
   methods: {
-    //获取数据
+    // 获取数据
     async getList() {
       const { data: res } = await this.$http.get('/api/getnewslist')
       console.log(res.message);
       this.list = res.message
     },
-   
-    //刷新
-    onRefresh() {
+    // 刷新
+    onRefresh () {
       setTimeout(() => {
         this.isLoading = false
         this.show = true
         this.getList()
       }, 1000);
     },
-    //跳转页面
-    skip(id) {
+    // 跳转页面
+    skip (id) {
       // this.$emit('id', id)
       // this.$router.push(`/news/detail/${id}`)
       this.$router.push({ path: '/news/detail', query: { id } })
-
-
     }
   },
   mounted() {

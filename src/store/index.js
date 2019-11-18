@@ -5,6 +5,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    /* 存储购物车里面的商品列表 */
+    shopCarList: [],
     list: [],
     feedList: [],
     localSrg: JSON.parse(localStorage.getItem('historysearch')) || [],

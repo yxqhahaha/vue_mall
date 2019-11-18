@@ -13,6 +13,7 @@ import goodsDesc from '../components/home/goods/goodsDesc'
 import Detail from '../components/home/news/Detail.vue'
 import photoInfo from '../components/home/photo/photoInfo.vue'
 import addgoods from '../components/home/goods/addgoods.vue'
+import goodsComments from '../components/home/goods/goodsComments'
 Vue.use(VueRouter)
 
 const routes = [
@@ -44,6 +45,11 @@ const routes = [
     path: '/goodsdesc/:id',
     name: 'goodsDesc',
     component: goodsDesc
+  },
+  {
+    path: '/goodscomments/',
+    name: 'goodsComments',
+    component: goodsComments
   },
   {
     path: '/addgoods',
