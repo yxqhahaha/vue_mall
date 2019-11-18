@@ -30,13 +30,6 @@ export default {
 
           
     },
-    updated() {
-          this.nowURL=window.location.hash
-          console.log(this.nowURL);
-          
-
-          
-    },
 
     computed: {
         
