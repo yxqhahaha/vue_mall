@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import 'vant/lib/index.css'
-import { Button, Toast, Search, Divider, Icon, Tag, Tab, Tabs, Row, Col, Grid, GridItem, Image, Lazyload, ImagePreview, Cell, CellGroup, Tag, Field, List, SwipeCell, Notify, Dialog, Loading, PullRefresh, SwipeItem, TabbarItem, Tabbar, Swipe, SubmitBar, Stepper } from 'vant'
+import { Button, Toast, Search, Divider, Icon, Tag, Tab, Tabs, Row, Col, Grid, GridItem, Image, Lazyload, ImagePreview, Cell, CellGroup, Field, List, SwipeCell, Notify, Dialog, Loading, PullRefresh, SwipeItem, TabbarItem, Tabbar, Swipe, SubmitBar, Stepper } from 'vant'
 Vue.use(PullRefresh)
 Vue.use(Loading)
 Vue.use(Search)
