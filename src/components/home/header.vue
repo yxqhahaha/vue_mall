@@ -1,7 +1,7 @@
 <template>
     
        <div class="title">
-            <i v-if="nowURL=='#/home'">返回</i>
+            <i @click="back">返回</i>
             <span>
               黑马程序员.vant
             </span>
@@ -18,6 +18,9 @@ export default {
         }
     },
     methods: {
+      back(){
+        this.$router.go(-1)
+      }
         
     },
     created() {
