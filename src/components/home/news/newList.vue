@@ -82,8 +82,11 @@ export default {
   padding: 0;
 }
 .spinner {
-  margin-top: 8px;
+  margin-top: 40px;
   text-align: center;
+}
+.van-pull-refresh {
+  margin-top: 40px;
 }
 .box {
   height: 47px;

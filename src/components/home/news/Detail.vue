@@ -98,6 +98,7 @@ export default {
   padding: 0;
 }
 .content {
+  margin-top: 40px;
   padding: 0 10px;
 }
 .tit {
