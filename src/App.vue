@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <!-- <Home /> -->
-    <headers></headers>
-    <router-view />
-<footers></footers>
+        <headers></headers>
+        <router-view></router-view>
+        <footers></footers>
   </div>
 </template>
 
@@ -15,16 +15,11 @@ import footers from './components/home/footer'
 export default {
   name: 'app',
   components: {
-    headers:headers,
-    footers:footers
+    headers: headers,
+    footers: footers
   }
-  // components: {
-  //   // Home,
-  //   home
-  // }
 }
 </script>
 
-<style>
-
+<style lang="less" scoped>
 </style>
