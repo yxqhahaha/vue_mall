@@ -94,7 +94,7 @@
       },
       toGoodsDesc() {
         let id = this.getId;
-        this.$router.push(`goodsdesc/${id}`);
+        this.$router.push(`/goodsdesc/${id}`);
       }
     },
     computed: {
