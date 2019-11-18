@@ -84,6 +84,7 @@ export default {
       this.goodsSwipe = res2.message
       console.log(res2)
     },
+    /* change事件 */
     onChange (value) {
       console.log(this.max)
       if (value >= this.goodsInfo.stock_quantity) {
