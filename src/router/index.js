@@ -8,10 +8,12 @@ import photoList from '../components/home/photo/photoList.vue'
 import member from '../components/member/member.vue'
 import shopcar from '../components/shopcar/shopcar.vue'
 import search from '../components/search/search.vue'
+import goodsDetail from '../components/home/goods/goodsDetail'
+import goodsDesc from '../components/home/goods/goodsDesc'
 import Detail from '../components/home/news/Detail.vue'
-
 import photoInfo from '../components/home/photo/photoInfo.vue'
 import addgoods from '../components/home/goods/addgoods.vue'
+import goodsComments from '../components/home/goods/goodsComments'
 Vue.use(VueRouter)
 
 const routes = [
@@ -33,6 +35,21 @@ const routes = [
     path: '/goods/list',
     name: 'goodsList',
     component: goodsList
+  },
+  {
+    path: '/goods/detail/:id',
+    name: 'goodsDetail',
+    component: goodsDetail
+  },
+  {
+    path: '/goodsdesc/:id',
+    name: 'goodsDesc',
+    component: goodsDesc
+  },
+  {
+    path: '/goodscomments/',
+    name: 'goodsComments',
+    component: goodsComments
   },
   {
     path: '/addgoods',
