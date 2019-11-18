@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <div class="title">
       <h4>{{this.goodsDescData.title}}</h4>
       <hr />

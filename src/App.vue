@@ -2,10 +2,10 @@
   <div id="app">
     <!-- <Home /> -->
     <!--  head  -->
-    <div class="head">
-      <a @click="$router.go(-1)">返回</a>
-      <span>移动商城</span>
-    </div>
+<!--    <div class="head">-->
+<!--      <a @click="$router.go(-1)">返回</a>-->
+<!--      <span>移动商城</span>-->
+<!--    </div>-->
     <headers></headers>
     <router-view />
 <footers></footers>
@@ -20,8 +20,8 @@ import footers from './components/home/footer'
 export default {
   name: 'app',
   components: {
-    headers:headers,
-    footers:footers
+    headers: headers,
+    footers: footers
   }
   // components: {
   //   // Home,

@@ -1,7 +1,9 @@
 <template>
    <div class="title">
-
-      <i @click="back" v-text="textBack"></i>
+      <div @click="back">
+        <i v-if="nowURL==='#/home'"></i>
+        <i v-else>返回</i>
+      </div>
       <span>
         移动商城
       </span>
@@ -13,8 +15,7 @@
 export default {
   data () {
     return {
-      nowURL: '',
-      textBack: '返回'
+      nowURL: ''
     }
   },
   methods: {

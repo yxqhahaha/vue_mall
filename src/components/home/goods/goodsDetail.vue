@@ -99,6 +99,9 @@ export default {
       // 获取store->state中购物车数组的值
       // 将当前商品的id 传入数组中
       this.$store.state.shopCarList.push(this.getId)
+      this.$toast({
+        message: '已加入购物车'
+      })
     },
     // 跳转到商品图文介绍页面
     toGoodsDesc () {
