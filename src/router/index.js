@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import home from '../components/home/home.vue'
 import newList from '../components/home/news/newList.vue'
 import goodsList from '../components/home/goods/goodsList.vue'
+import addgoods from '../components/home/goods/addgoods.vue'
 import photoList from '../components/home/photo/photoList.vue'
 import member from '../components/member/member.vue'
 import shopcar from '../components/shopcar/shopcar.vue'
@@ -41,6 +42,11 @@ const routes = [
     path: '/goodsdesc/:id',
     name: 'goodsDesc',
     component: goodsDesc,
+  },
+  {
+    path: '/addgoods',
+    name: 'addgoods',
+    component: addgoods
   },
   {
     path: '/photo/list',

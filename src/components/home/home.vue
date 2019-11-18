@@ -6,13 +6,13 @@
 </template>
 
 <script>
-import GoodsList from './goods/goodsList'
+// import GoodsList from './goods/goodsList'
 export default {
   name: 'Home',
 
-  data (){
+  data () {
     return {}
-  },
+  }
 }
 </script>
 
