@@ -1,0 +1,66 @@
+<template>
+    
+       <div class="title">
+            <i v-if="nowURL=='#/home'">返回</i>
+            <span>
+              黑马程序员.vant
+            </span>
+          </div>
+    
+</template>
+
+<script>
+export default {
+    data(){
+        return{
+      nowURL:''
+
+        }
+    },
+    methods: {
+        
+    },
+    created() {
+          this.nowURL=window.location.hash
+          console.log(this.nowURL);
+          
+
+          
+    },
+    updated() {
+          this.nowURL=window.location.hash
+          console.log(this.nowURL);
+          
+
+          
+    },
+
+    computed: {
+        
+    },
+    component: {
+
+    }
+}
+</script>
+
+<style lang="css" scoped>
+.title{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color:#1989FA;
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+  font-size: 14px;
+  color: #fff;
+  z-index: 999;
+}
+.title i {
+ 
+  position: absolute;
+  left: 20px;
+  font-style: normal;
+} 
+</style>
