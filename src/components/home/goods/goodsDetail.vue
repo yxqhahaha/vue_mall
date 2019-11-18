@@ -1,13 +1,9 @@
 <template>
   <div>
-    <!--  head  -->
-    <div class="head">
-      <a @click="$router.go(-1)">返回</a>
-      <span>移动商城</span>
-    </div>
+
     <div class="goodsImg">
       <!--  商品图片展示  -->
-      <van-swipe :autoplay="3000">
+      <van-swipe :autoplay="3000" touchable>
         <van-swipe-item v-for="(image, index) in goodsSwipe" :key="index">
           <img v-lazy="image"/>
         </van-swipe-item>
@@ -29,19 +25,19 @@
         <van-stepper v-model="value" min="1" input-width="30px" :max="max" @change="onChange(value)"/>
       </div>
       <div class="btns">
-        <van-button type="primary" size="small">立即购买</van-button>
-        <van-button type="warning" size="small">加入购物车</van-button>
+        <van-button class="van-button van-button--info van-button--normal" size="small">立即购买</van-button>
+        <van-button class="van-button van-button--danger van-button--normal" size="small">加入购物车</van-button>
       </div>
     </div>
     <!--  商品参数  -->
     <div class="goods_params">
-      <p><strong>商品参数</strong></p>
-      <div>
+      <p class="params_title"> 商品参数 </p>
+      <div class="params_detail">
         <p>商品货号:{{goodsInfo.goods_no}}</p>
         <p>库存情况:{{goodsInfo.stock_quantity}}</p>
         <p>上架时间:{{goodsInfo.add_time}}</p>
       </div>
-      <div class="goods_params_btns">
+      <div class="params_btns">
         <van-button plain type="primary" @click="toGoodsDesc">图文介绍</van-button>
         <van-button plain type="danger">商品评论</van-button>
       </div>
@@ -98,10 +94,6 @@ export default {
     toGoodsDesc () {
       let id = this.getId
       this.$router.push(`/goodsdesc/${id}`)
-    },
-    back () {
-      // console.log('点击了返回')
-      this.$router.go(-1)
     }
   },
   computed: {
@@ -117,31 +109,17 @@ export default {
 </script>
 
 <style lang="less" scoped>
-  .head {
-    color: #fff;
-    height: 40px;
-    line-height: 40px;
-    text-align: center;
-    background-color: #1989fa;
-    a {
-      font-size: 14px;
-      position: absolute;
-      left: 10px;
-    }
-    span {
-      margin: 0;
-      font-size: 14px;
-    }
-  }
+
   .goodsImg {
     height: 200px;
-    border: 1px solid #eee;
+    border: 1px solid #ccc;
     border-radius: 2px;
     margin: 10px 5px;
     overflow: hidden;
     height: 230px;
 
     .van-swipe-item {
+      text-align: center;
       img {
         height: 200px;
         width: 200px;
@@ -150,26 +128,26 @@ export default {
   }
 
   .goodsInfo {
-    border: 1px solid #eee;
+    border: 1px solid #ccc;
     border-radius: 2px;
     margin: 10px 5px;
     padding: 5px 10px;
     overflow: hidden;
-
     .goodsTitle {
-      font-size: 14px;
-      text-align: center;
-      border-bottom: 1px solid #eee;
+      margin: 10px 0;
+      font-size: 16px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
     }
 
     .price {
       text-align: left;
-      font-size: 16px;
-
+      font-size: 14px;
+      color: #8f8f94;
+      margin-top: 20px;
       del {
         margin-right: 10px;
       }
-
       .goods_price {
         font-size: 14px;
         color: red;
@@ -179,21 +157,50 @@ export default {
     .buyCount {
       text-align: left;
       font-size: 14px;
-      margin: 5px 0;
-
+      margin: 10px 0;
+      height: 50px;
+      color: #8f8f94;
       span {
+        margin:5px 10px 0  0;
         float: left;
+        line-height: 40px;
       }
-
       .van-stepper {
         font-size: 12px;
+        line-height: 40px;
       }
     }
 
     .btns {
       button {
         float: left;
-        margin: 0 3px;
+        margin: 10px 8px;
+      }
+    }
+  }
+  .goods_params {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px 5px;
+    padding: 10px;
+    .params_title {
+      font-size: 16px;
+      padding-bottom: 10px ;
+      border-bottom: 1px solid #ccc;
+    }
+    .params_detail {
+      font-size: 14px;
+      color: #8f8f94;
+      border-bottom: 1px solid #ccc;
+      p {
+        padding-left: 10px;
+      }
+    }
+    .params_btns {
+      button {
+        width: 100%;
+        display: block;
+        margin: 10px 0;
       }
     }
   }

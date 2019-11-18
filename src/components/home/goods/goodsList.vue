@@ -1,16 +1,12 @@
 <template>
   <div>
-    <!--  head  -->
-    <div class="head">
-      <a @click="$router.go(-1)">返回</a>
-      <span>移动商城</span>
-    </div>
+
     <van-list v-model="loading" :finished="finished" error-text="请求失败，点击重新加载">
       <van-cell v-for="item in goodsList" :key="item.id" gutter="3" @click="toGoodsDetail(item.id)">
         <div>
-          <van-image width="300" height="300" :src="item.img_url"/>
+          <van-image :src="item.img_url"/>
         </div>
-        <p>
+        <p class="title">
           {{item.title}}
         </p>
         <div class="bottom_box">
@@ -79,25 +75,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-  .head {
-    color: #fff;
-    height: 40px;
-    line-height: 40px;
-    text-align: center;
-    background-color: #1989fa;
-
-    a {
-      font-size: 14px;
-      position: absolute;
-      left: 10px;
-    }
-
-    span {
-      margin: 0;
-      font-size: 14px;
-    }
-  }
-
   .van-list {
     display: flex;
     flex-wrap: wrap;
@@ -110,8 +87,13 @@ export default {
       width: 48%;
       margin: 10px 0;
       border: 1px solid #ccc;
-
+      padding: 0;
+      .van-image {
+        padding: 10px;
+        min-height: 180px;
+      }
       p {
+        padding: 4px 10px;
         font-size: 14px;
         text-align: left;
       }
