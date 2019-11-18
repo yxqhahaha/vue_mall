@@ -14,9 +14,9 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
-      nowURL: '',   
+      nowURL: ''  
     }
   },
   methods: {

@@ -22,15 +22,7 @@
             <h4 data-v-67532562="">发表评论</h4>
             <hr data-v-67532562="" />
             <van-cell-group border>
-              <van-field
-                v-model="message"
-                rows="2"
-                autosize
-                type="textarea"
-                maxlength="50"
-                placeholder="请输入留言"
-                show-word-limit
-              />
+              <van-field v-model="message" rows="2" autosize type="textarea" maxlength="50" placeholder="请输入留言" show-word-limit />
             </van-cell-group>
             <div style='margin-top:10px'></div>
             <van-button type="info" size="small">提交评论</van-button>
@@ -51,29 +43,29 @@
   </div>
 </template>
 <script>
-import header from "../../header/header";
+import header from '../../header/header'
 export default {
-  data() {
+  data () {
     return {
       picList: [],
       picInfo: {},
-      message: "",
+      message: '',
       commentList: [1, 2, 3]
     };
   },
   components: {
     headers: header
   },
-  mounted() {
+  mounted () {
     this.getPhotoList();
   },
   methods: {
     datesFormat(time) {
-   
-    
-      return (time||'').split("T")[0];
+
+
+      return (time || '').split("T")[0];
     },
-    async getPhotoList() {
+    async getPhotoList () {
       let id = this.$route.params.id;
       const { data } = await this.$http.get("/api/getthumimages/" + id);
       console.log(data.message);
@@ -85,7 +77,7 @@ export default {
       console.log(res1.message);
       this.commentList = res1.message;
     },
-    clickImg() {
+    clickImg () {
       let imgList = [];
       this.picList.forEach(e => {
         imgList.push(e.src);

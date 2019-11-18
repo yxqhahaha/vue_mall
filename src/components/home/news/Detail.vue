@@ -37,7 +37,7 @@
 <script>
 export default {
   name: 'detail',
-  data() {
+  data () {
     return {
       list: [],
       newId: '',
@@ -47,43 +47,43 @@ export default {
   },
   computed: {
     feedList: {
-      get() {
+      get () {
         return this.$store.state.feedList
       },
-      set(val) {
+      set (val) {
         return []
       }
     }
   },
-  created() {
+  created () {
     this.detailList()
     this.newFeed()
   },
   methods: {
-    //获取数据
-    async detailList() {
+    // 获取数据
+    async detailList () {
       this.newId = this.$route.query.id
       const { data: res } = await this.$http.get('/api/getnew/' + this.newId)
       this.list = res.message
     },
-    //拿到评论数据
-    async newFeed() {
+    // 拿到评论数据
+    async newFeed () {
       const { data: res } = await this.$http.get(`/api/getcomments/${this.newId}?pageindex=${this.counet}`)
       this.$store.commit('add', res.message)
     },
-    async add() {
+    async add () {
       const { data: res } = await this.$http.get(`/api/getcomments/${this.newId}?pageindex=1`)
       this.$store.commit('updateMsg', res.message)
     },
-    //点击提交评论信息
-    async addClick() {
-       await this.$http.post(`/api/postcomment/${this.newId}`, { artid: this.newId, content: this.content })
+    // 点击提交评论信息
+    async addClick () {
+      await this.$http.post(`/api/postcomment/${this.newId}`, { artid: this.newId, content: this.content })
       this.add()
       this.newFeed()
       this.content = ''
     },
-    //加载更多评论
-    async btnCliss() {
+    // 加载更多评论
+    async btnCliss () {
       this.counet++
       const { data: res } = await this.$http.get(`/api/getcomments/${this.newId}?pageindex=${this.counet}`)
       this.$store.commit('add', res.message)

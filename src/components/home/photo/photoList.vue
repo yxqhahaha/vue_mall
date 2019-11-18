@@ -4,18 +4,15 @@
     <div class="main">
       <!-- van-tab组件的change事件在当前激活的标签改变时触发，这个事件可以接收两个回调参数（name：标签标识符，title：标题） -->
       <van-row>
-        <van-tabs
-          v-model="active"
-          @change="
+        <van-tabs @change="
             name => {
               selectChange(name);
             }
-          "
-        >
+          ">
           <!-- 这里的name属性就是上面的change事件的标签标识符，将id传进去，回调参数里面就可以接收到这个id -->
           <van-tab :title="item.title" v-for="item in photoTabeList" :key="item.id" :name="item.id">
-            <div v-for="item in photoList"  v-lazy="item"  :key="item.id" class="imgBox" @click="clickImg(item.id)">
-             <img :src="item.img_url" alt="" />
+            <div v-for="item in photoList" v-lazy="item" :key="item.id" class="imgBox" @click="clickImg(item.id)">
+              <img :src="item.img_url"/>
               <div class="text">
                 <p>{{ item.seo_title }}</p>
                 <p v-html="item.content"></p>
@@ -29,7 +26,7 @@
 </template>
 
 <script>
-import header from "../../header/header";
+import header from '../../header/header';
 export default {
   name: "photoList",
   components: {
@@ -40,7 +37,6 @@ export default {
       photoTabeList: [],
       photoList: [],
       id: 0,
-      active: 0
     };
   },
   created() {
@@ -49,7 +45,7 @@ export default {
   methods: {
     async getInfo() {
       const { data: res } = await this.$http.get(`/api/getimgcategory`);
-     // console.log(res);
+      // console.log(res);
       this.photoTabeList = res.message;
       this.photoTabeList.unshift({ id: 0, title: "全部" });
       const { data: res1 } = await this.$http.get(`/api/getimages/${this.id}`);
@@ -61,9 +57,9 @@ export default {
       this.id = name;
       this.getInfo();
     },
-    clickImg(id){
+    clickImg(id) {
       console.log(id);
-      this.$router.push('/photo/Info/'+id)
+      this.$router.push('/photo/Info/' + id)
     }
   }
 };
