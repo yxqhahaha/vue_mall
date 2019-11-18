@@ -91,7 +91,7 @@ export default {
         imgList.push(e.src);
       });
       console.log(imgList);
-      const instance = this.$ImagePreview({
+      this.$ImagePreview({
         images: imgList
         // asyncClose: true
       });

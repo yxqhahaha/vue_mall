@@ -8,7 +8,7 @@ import member from "../components/member/member.vue";
 import shopcar from "../components/shopcar/shopcar.vue";
 import search from "../components/search/search.vue";
 import photoInfo from "../components/home/photo/photoInfo.vue";
-
+import addgoods from '../components/home/goods/addgoods.vue'
 Vue.use(VueRouter);
 
 const routes = [
@@ -32,8 +32,13 @@ const routes = [
     component: goodsList
   },
   {
-    path: "/photo/list",
-    name: "photoList",
+    path: '/addgoods',
+    name: 'addgoods',
+    component: addgoods
+  },
+  {
+    path: '/photo/list',
+    name: 'photoList',
     component: photoList
   },
   {

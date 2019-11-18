@@ -1,7 +1,12 @@
+
 import Vue from "vue";
 import "vant/lib/index.css";
 import { 
-    Button, 
+    Button,
+    Search, 
+    Divider, 
+    Icon,
+    Tag,
     Tab, 
     Tabs,
     Row, 
@@ -14,8 +19,16 @@ import {
     Cell, 
     CellGroup ,
     Field ,
-    List 
+    List ,
+    SwipeCell,
+    Notify,
+    Dialog,
+    Loading,
+
  } from "vant";
+ Vue.use(Search)
+ Vue.use(Divider)
+ Vue.use(Icon)
 Vue.use(List);
 Vue.use(Field);
 Vue.use(Cell);
@@ -29,4 +42,10 @@ Vue.use(Col);
 Vue.use(Button);
 Vue.use(Tab);
 Vue.use(Tabs);
+Vue.use(Tag);
+Vue.use(SwipeCell)
+Vue.use(Notify)
+Vue.use(Dialog)
+Vue.use(Loading)
+
 Vue.prototype.$ImagePreview=ImagePreview
