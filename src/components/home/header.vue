@@ -14,20 +14,29 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
-      nowURL: '',   
+      nowURL: ''
     }
   },
   methods: {
-    back() {     
+    back () {
       this.$router.go(-1)
     }
   },
-  created() {
+  created () {
     this.nowURL = window.location.hash
-    console.log(this.nowURL);
+    console.log(this.nowURL)
+  },
+  updated () {
+    this.nowURL = window.location.hash
+    console.log(this.nowURL)
+  },
+  computed: {
+  },
+  component: {
   }
+
 }
 </script>
 

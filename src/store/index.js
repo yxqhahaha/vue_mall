@@ -5,8 +5,13 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    /* 存储购物车里面的商品列表 */
+    shopCarList: [],
+    list: [],
+    feedList: [],
     localSrg: JSON.parse(localStorage.getItem('historysearch')) || [],
-    message: []
+    message: [],
+    goodsId: 1
   },
   mutations: {
     removeItem (state) {
@@ -20,10 +25,19 @@ export default new Vuex.Store({
     },
     getMsg (state, res) {
       state.message = res.data.message
+    },
+    getGoodsId (state, id) {
+      state.goodsId = id
+    },
+    getShopCarList (state, goodsId) {
+      state.shopCarList.push(goodsId)
     }
   },
   actions: {
   },
   modules: {
+  },
+  getters: {
+
   }
 })

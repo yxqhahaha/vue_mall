@@ -9,48 +9,39 @@
 </template>
 <script>
 export default {
-    data(){
-        return{
-           active: 0,
-             
-        }
-    },
-    methods: {
-    //   changeURL (url) {
-    //       window.localStorage.setItem('active',this.active)
-    //   }
-    tabChange(){
-        
-        
+  data () {
+    return {
+      active: 0
     }
-    },
-    created() {
-
-  
-        
-    },
-    mounted() {
-        // if(window.localStorage.getItem('active')){
-        //     this.active=window.localStorage.getItem('active')
-        // }else{
-        //     this.active=0
-
-        // }
-        console.log( this.active);
-        
-        //       this.active = window.localStorage.getItem('active');
-        // console.log(this.active);
-
-    },
-    computed: {
-        
-    },
-    component: {
-
+  },
+  methods: {
+  //   changeURL (url) {
+  //       window.localStorage.setItem('active',this.active)
+  //   }
+    tabChange () {
     }
+  },
+  created () {
+  },
+  mounted() {
+    // if(window.localStorage.getItem('active')){
+    //     this.active=window.localStorage.getItem('active')
+    // }else{
+    //     this.active=0
+
+    // }
+    console.log(this.active)
+    //       this.active = window.localStorage.getItem('active');
+    // console.log(this.active);
+
+  },
+  computed: {
+  },
+  component: {
+
+  }
 
 }
 </script>
 <style lang="css" scoped>
-    
 </style>
