@@ -38,7 +38,7 @@
       </div>
       <div class="params_btns">
         <van-button plain type="primary" @click="toGoodsDesc">图文介绍</van-button>
-        <van-button plain type="danger" @click="toGoodsComment">商品评论</van-button>
+        <van-button class="params_comments" plain type="danger" @click="toGoodsComment">商品评论</van-button>
       </div>
     </div>
 
@@ -216,6 +216,9 @@ export default {
         width: 100%;
         display: block;
         margin: 10px 0;
+      }
+      .params_comments {
+        margin-bottom: 40px;
       }
     }
   }

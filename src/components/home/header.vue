@@ -1,13 +1,12 @@
 <template>
-   <div class="title">
-      <div @click="back">
-        <i v-if="nowURL==='#/home'"></i>
-        <i v-else>返回</i>
-      </div>
-      <span>
+  <div class="title">
+    <div>
+      <i @click="back" v-if="this.$route.name !== 'home' ">返回</i>
+    </div>
+    <span>
         移动商城
       </span>
-    </div>
+  </div>
 
 </template>
 
@@ -31,31 +30,29 @@ export default {
     this.nowURL = window.location.hash
     console.log(this.nowURL)
   },
-  computed: {
-  },
-  component: {
-  }
-
+  computed: {},
+  component: {}
 }
 </script>
 
 <style lang="css" scoped>
-.title{
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background-color:#1989FA;
-  text-align: center;
-  height: 40px;
-  line-height: 40px;
-  font-size: 14px;
-  color: #fff;
-  z-index: 999;
-}
-.title i {
+  .title {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #1989FA;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    color: #fff;
+    z-index: 999;
+  }
 
-  position: absolute;
-  left: 20px;
-  font-style: normal;
-}
+  .title i {
+
+    position: absolute;
+    left: 20px;
+    font-style: normal;
+  }
 </style>

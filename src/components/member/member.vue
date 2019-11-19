@@ -6,14 +6,8 @@
 </template>
 
 <script>
-// import headers from '../home/header'
-// import footers from '../home/footer'
 export default {
-  name: 'member',
-  // components: {
-  //   headers:headers,
-  //   footers:footers
-  // }
+  name: 'member'
 }
 </script>
 
@@ -28,5 +22,9 @@ export default {
 }
 .vanIcon {
     animation: changDeg 2s linear 0.2s infinite;
+    margin: 20% 45% 10% 45%;
+}
+h3 {
+  margin-left: 30%;
 }
 </style>

@@ -18,7 +18,8 @@ export default {
   },
   methods: {
     addGoods () {
-      this.$http.post('/api/addproduct', { name: this.value }).then(this.toSearch)
+      this.$notify({ type: 'success', duration: 800, message: '添加成功' })
+      this.$http.post('/api/addproduct', { name: this.value }).then(this.toSearch())
     },
     toSearch () {
       this.$router.push({
@@ -30,6 +31,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
+div {
+  margin-top: 70px;
+}
 .addBtn{
     margin: 40px 0;
     font-weight: bold;

@@ -9,7 +9,7 @@ export default new Vuex.Store({
     shopCarList: [],
     list: [],
     feedList: [],
-    localSrg: JSON.parse(localStorage.getItem('historysearch')) || [],
+    localSrg: [],
     message: [],
     goodsId: 1,
     newsId: 1,
@@ -25,13 +25,16 @@ export default new Vuex.Store({
       state.feedList = val
     },
     removeItem (state) {
-      state.localSrg = localStorage.removeItem('historysearch')
+      localStorage.removeItem('historysearch')
+      state.localSrg = []
     },
     getItem (state, value) {
-      state.localSrg.push(value)
-      state.localSrg.reverse()
-      localStorage.setItem('historysearch', JSON.stringify(state.localSrg))
-      state.localSrg = JSON.parse(localStorage.getItem('historysearch'))
+      let arr = state.localSrg
+      arr.push(value)
+      arr.reverse()
+      localStorage.removeItem('historysearch')
+      localStorage.setItem('historysearch', state.localSrg)
+      state.localSrg = arr
     },
     getMsg (state, res) {
       state.message = res.data.message
@@ -47,6 +50,17 @@ export default new Vuex.Store({
     },
     getShopCarList (state, goodsId) {
       state.shopCarList.push(goodsId)
+    },
+    createLocal (state) {
+      state.localSrg = []
+    },
+    updateLocal (state, val) {
+      if (val.split(',') === undefined) {
+        state.localSrg = []
+        return
+      }
+      state.localSrg = val.split(',')
+      localStorage.setItem('historysearch', state.localSrg)
     }
   },
   actions: {

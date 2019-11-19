@@ -141,6 +141,7 @@ export default {
     margin-right: 6px;
   }
   .btnCliss {
+    margin-bottom: 50px;
     color: pink;
     border: 1px solid pink;
   }
