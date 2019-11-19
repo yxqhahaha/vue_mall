@@ -3,7 +3,7 @@
      <!-- <headers></headers> -->
       <!-- 轮播图 -->
       <van-swipe :autoplay="3000" indicator-color="white" class="swipe">
-           <van-swipe-item v-for="item in swipeImgs" :key="item.id"><img :src="item.img" alt="" class="swipeImg" ></van-swipe-item> 
+           <van-swipe-item v-for="item in swipeImgs" :key="item.id"><img :src="item.img" alt="" class="swipeImg" ></van-swipe-item>
       </van-swipe>
 
       <!-- 宫格 -->
@@ -37,8 +37,6 @@
       </van-grid>
       <!-- <footers></footers> -->
 
-      
-         
         <!-- <goodsList /> -->
         <!-- <newList /> -->
         <!-- <photoList /> -->
@@ -52,27 +50,24 @@
 // import headers from './header'
 // import footers from './footer'
 export default {
-    data() {
-      return {
-       swipeImgs:[]
+  data () {
+    return {
+      swipeImgs: []
     }
   },
-  methods:{
-   changeURL (url) {
-     this.$router.push(url)
-
-   },
-  async getSwipeIMG(){
-     let res = await this.$http.get('/api/getlunbo');
-     this.swipeImgs = res.data.message  
-
-   }
+  methods: {
+    changeURL (url) {
+      this.$router.push(url)
+    },
+    async getSwipeIMG () {
+      let res = await this.$http.get('/api/getlunbo')
+      this.swipeImgs = res.data.message
+    }
   },
   created () {
     this.getSwipeIMG()
-
   },
-  name: 'home',
+  name: 'home'
   // components: {
   //   headers:headers,
   //   footers:footers

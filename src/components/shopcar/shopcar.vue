@@ -2,41 +2,79 @@
   <div class="box">
     <div class="shopCarContent">
       <!-- 商品 -->
-      <van-card :num="item.cou" :price="item.sell_price" :title="item.title" :thumb="item.thumb_path" v-for="(item,i) in shopCarList" :key="i">
-        <div slot="footer">
-          <van-stepper v-model="item.cou" />
+      <van-checkbox-group
+        @change="
+          e => {
+            changeChecked(e);
+          }
+        "
+        v-model="result"
+        ref="checkboxGroup"
+      >
+        <!-- <van-button type="primary" @click="checkAll">全选</van-button> -->
+        <van-button type="info" @click="toggleAll">全选</van-button>
+        <div v-for="(item, i) in shopCarList" :key="item.id">
+          <!-- <van-checkbox name="a">复选框 a</van-checkbox> -->
+          <van-checkbox :name="i"></van-checkbox>
+          <van-card
+            :num="item.cou"
+            :price="item.sell_price"
+            :title="item.title"
+            :thumb="item.thumb_path"
+          >
+            <div slot="footer">
+              <van-stepper v-model="item.cou" />
+            </div>
+          </van-card>
         </div>
-      </van-card>
+      </van-checkbox-group>
+
       <!-- 合计 -->
-      <van-submit-bar :price="getTotal" button-text="提交订单" @submit="onSubmit" />
+      <van-submit-bar
+        :price="getTotal"
+        button-text="提交订单"
+        @submit="onSubmit"
+      />
     </div>
   </div>
 </template>
 
 <script>
-
 export default {
   name: 'shopcar',
   data () {
     return {
+      result: [],
       shopCarList: [
         // cou 数量
         // sell_price 价格
         // title 标题
       ],
+      checkedAll: []
     }
   },
   methods: {
+    // checkAll() {
+    //   this.$refs.checkboxGroup.toggleAll(true);
+    //   console.log(this.result);
+    // },
     // 获取购物车信息
     async getShopCarList () {
       let res = await this.$http.get('/api/goods/getshopcarlist/87,88,89')
       this.shopCarList = res.data.message
-      console.log(res.data.message);
-      console.log(this.total);
-
+      this.shopCarList.forEach(item => {
+        item.checked = false
+      })
+      console.log(res.data.message)
+      console.log(this.total)
     },
-    onSubmit () {
-
+    onSubmit () {},
+    changeChecked (e) {
+      console.log(e)
+    },
+    toggleAll () {
+      this.$refs.checkboxGroup.toggleAll()
+      console.log(this.result)
     }
   },
   created () {
@@ -44,19 +82,17 @@ export default {
   },
   computed: {
     getTotal () {
-      let total = 0;
+      let total = 0
       this.shopCarList.forEach(item => {
-
         total += item.cou * item.sell_price
       })
-      return total * 100;
+      return total * 100
     }
-  },
-
+  }
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="less" scoped>
 .back {
   position: fixed;
   top: 0;

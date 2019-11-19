@@ -24,10 +24,10 @@
             <van-cell-group border>
               <van-field v-model="message" rows="2" autosize type="textarea" maxlength="50" placeholder="请输入留言" show-word-limit />
             </van-cell-group>
-            <div style='margin-top:10px'></div>
-            <van-button type="info" size="small">提交评论</van-button>
+            <div style="margin-top:10px"></div>
+            <van-button type="info" size="large" @click="addClick">提交评论</van-button>
             <div style="margin-top:10px">
-              <div v-for="(item, index) in commentList" :key="index" style="margin-top:10px">
+              <div v-for="(item, index) in this.$store.state.feedList" :key="index" style="margin-top:10px">
                 <div class="comTitle">
                   <span>第{{ index + 1 }}楼</span>
                   <span>用户:{{ item.user_name }}</span>
@@ -36,69 +36,90 @@
                 <div class="comcontent">{{ item.content }}</div>
               </div>
             </div>
+            <van-button size="large" color="#7232dd" plain @click="btnCliss">加载更多</van-button>
           </div>
         </div>
       </van-row>
     </div>
+    <footers></footers>
   </div>
 </template>
 <script>
-import header from '../../header/header'
+import header from '../header'
+import footer from '../footer'
 export default {
   data () {
     return {
       picList: [],
       picInfo: {},
       message: '',
-      commentList: [1, 2, 3]
-    };
+      commentList: [],
+      id: '0',
+      counet: 1
+    }
   },
   components: {
-    headers: header
+    headers: header,
+    footers: footer
   },
   mounted () {
-    this.getPhotoList();
+    this.getPhotoList()
   },
   methods: {
-    datesFormat(time) {
-
-
-      return (time || '').split("T")[0];
+    datesFormat (time) {
+      return (time || '').split('T')[0]
     },
     async getPhotoList () {
-      let id = this.$route.params.id;
-      const { data } = await this.$http.get("/api/getthumimages/" + id);
-      console.log(data.message);
-      this.picList = data.message;
-      const { data: res } = await this.$http.get("/api/getimageInfo/" + id);
-      console.log(res.message[0]);
-      this.picInfo = res.message[0];
-      const { data: res1 } = await this.$http.get(`/api/getcomments/${id}?pageindex=1`);
-      console.log(res1.message);
-      this.commentList = res1.message;
+      this.id = this.$route.params.id
+      const { data } = await this.$http.get('/api/getthumimages/' + this.id)
+      console.log(data.message)
+      this.picList = data.message
+      const { data: res } = await this.$http.get('/api/getimageInfo/' + this.id)
+      console.log(res.message[0])
+      this.picInfo = res.message[0]
+      this.add()
+      // console.log(res1.message)
+      // this.commentList = res1.message
     },
     clickImg () {
-      let imgList = [];
+      let imgList = []
       this.picList.forEach(e => {
-        imgList.push(e.src);
-      });
-      console.log(imgList);
+        imgList.push(e.src)
+      })
+      console.log(imgList)
       this.$ImagePreview({
         images: imgList
         // asyncClose: true
-      });
+      })
+    },
+    // 拿到评论数据
+    async newFeed () {
+      const { data: res } = await this.$http.get(`/api/getcomments/${this.id}?pageindex=${this.counet}`)
+      this.$store.commit('add', res.message)
+    },
+    async add () {
+      const { data: res } = await this.$http.get(`/api/getcomments/${this.id}?pageindex=1`)
+      this.$store.commit('updateMsg', res.message)
+    },
+    // 点击提交评论信息
+    async addClick () {
+      await this.$http.post(`/api/postcomment/${this.id}`, { artid: this.id, content: this.content })
+      this.add()
+      this.newFeed()
+      this.content = ''
+    },
+    // 加载更多评论
+    async btnCliss () {
+      this.counet++
+      const { data: res } = await this.$http.get(`/api/getcomments/${this.id}?pageindex=${this.counet}`)
+      this.$store.commit('add', res.message)
     }
   }
-};
+}
 </script>
 <style lang="less" scoped>
-* {
-  margin: 0;
-  padding: 0;
-}
 .ph_main {
-  margin-top: 20px;
-  padding: 10px 10px;
+  padding: 50px 10px 10px;
   .title {
     text-align: center;
     color: #26a2ff;

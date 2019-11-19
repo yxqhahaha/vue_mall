@@ -5,10 +5,22 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    /* 存储购物车里面的商品列表 */
+    shopCarList: [],
+    list: [],
+    feedList: [],
     localSrg: JSON.parse(localStorage.getItem('historysearch')) || [],
     message: []
   },
   mutations: {
+    add (state, val) {
+      let oldArray = state.feedList
+      let newArray = oldArray.concat(val)
+      state.feedList = newArray
+    },
+    updateMsg (state, val) {
+      state.feedList = val
+    },
     removeItem (state) {
       state.localSrg = localStorage.removeItem('historysearch')
     },
@@ -25,5 +37,8 @@ export default new Vuex.Store({
   actions: {
   },
   modules: {
+  },
+  getters: {
+
   }
 })

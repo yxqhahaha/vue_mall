@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import 'vant/lib/index.css'
-import { Button, Toast, Search, Divider, Icon, Tag, Tab, Tabs, Row, Col, Grid, GridItem, Image, Lazyload, ImagePreview, Cell, CellGroup, Field, List, SwipeCell, Notify, Dialog, Loading, PullRefresh, SwipeItem, TabbarItem, Tabbar, Swipe, SubmitBar, Stepper, Card } from 'vant'
+import { Button, Card, Checkbox, CheckboxGroup, Toast, Search, Divider, Icon, Tag, Tab, Tabs, Row, Col, Grid, GridItem, Image, Lazyload, ImagePreview, Cell, CellGroup, Field, List, SwipeCell, Notify, Dialog, Loading, PullRefresh, SwipeItem, TabbarItem, Tabbar, Swipe, SubmitBar, Stepper } from 'vant'
 Vue.use(PullRefresh)
+Vue.use(Card)
+Vue.use(Checkbox).use(CheckboxGroup)
 Vue.use(Loading)
 Vue.use(Search)
 Vue.use(Divider)
@@ -31,5 +33,4 @@ Vue.use(TabbarItem)
 Vue.use(SwipeItem)
 Vue.use(Stepper)
 Vue.use(SubmitBar)
-Vue.use(Card)
 Vue.prototype.$ImagePreview = ImagePreview

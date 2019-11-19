@@ -1,32 +1,35 @@
 <template>
-  <div>
-    <div class="title">
-      <span @click="back">
-        <i v-if="nowURL === '#/home'"></i>
+   <div class="title">
+      <div @click="back">
+        <i v-if="nowURL==='#/home'"></i>
         <i v-else>返回</i>
-      </span>
+      </div>
       <span>
-        黑马程序员.vant
+        移动商城
       </span>
     </div>
-  </div>
+
 </template>
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       nowURL: ''
     }
   },
   methods: {
-    back() {
+    back () {
       this.$router.go(-1)
     }
   },
-  created() {
+  created () {
     this.nowURL = window.location.hash
-    console.log(this.nowURL);
+    console.log(this.nowURL)
+  },
+  updated () {
+    this.nowURL = window.location.hash
+    console.log(this.nowURL)
   }
 }
 </script>

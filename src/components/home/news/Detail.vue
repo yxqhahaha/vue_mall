@@ -4,32 +4,32 @@
       <div v-for="(item, i) in list" :key="i">
         <h3 class="tit">买房还是炒股，2015年买房无法拒绝的5大理由</h3>
         <div class="info">
-          <span>发表时间：{{item.add_time | dateFormat}}</span>
-          <span>点击次数：{{item.click}}</span>
+          <span>发表时间：{{ item.add_time | dateFormat }}</span>
+          <span>点击次数：{{ item.click }}</span>
         </div>
-        <div v-html="item.content">
-        </div>
+        <div v-html="item.content"></div>
       </div>
       <!-- 评论区域 -->
       <div class="base">
         <h4>发表评论</h4>
         <div>
-          <van-field class="text" v-model="content" placeholder="请输入留言">
-          </van-field>
+          <van-field class="text" v-model="content" placeholder="请输入留言"> </van-field>
           <van-button class="btn" type="info" @click="addClick">发表评论</van-button>
           <div v-for="(item, index) in feedList" :key="index">
             <div class="title">
-              <span class="title-l">第{{index+1}}楼</span>
-              <span class="title-l">用户：{{item.user_name}}</span>
-              <span class="title-l">发表时间：{{item.add_time | dateFormat }}</span>
+              <span class="title-l">第{{ index + 1 }}楼</span>
+              <span class="title-l">用户：{{ item.user_name }}</span>
+              <span class="title-l">发表时间：{{ item.add_time | dateFormat }}</span>
             </div>
             <div class="bodys">
-              <span>{{item.content}}</span>
+              <span>{{ item.content }}</span>
             </div>
           </div>
         </div>
       </div>
-      <van-button class="btnCliss" @click="btnCliss">加载更多</van-button>
+      <van-button class="btnCliss" @click="btnCliss">
+        <div>加载更多</div>
+      </van-button>
     </div>
   </div>
 </template>
@@ -148,7 +148,6 @@ export default {
   margin-top: 10px 0;
   text-align: left;
 }
-
 .title-l {
   float: left;
   margin-right: 6px;

@@ -31,6 +31,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
+div {
+  margin-top: 70px;
+}
 .addBtn{
     margin: 40px 0;
     font-weight: bold;

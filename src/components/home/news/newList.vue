@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <van-loading type="spinner" color="#1989fa" v-show="!show" class="spinner" />
     <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
       <div v-show="show">
@@ -7,16 +7,16 @@
           <div class="box-z" @click="skip(item.id)">
             <!-- 图片 -->
             <div class="box-l">
-              <img :src="item.img_url">
+              <img :src="item.img_url" />
             </div>
             <!-- 标题 -->
             <div class="title">
               <div class="hide">
-                <div class="title-r">{{item.title}}</div>
+                <div class="title-r">{{ item.title }}</div>
               </div>
               <div class="titleTop">
-                <div class="titleTop-l">发表时间：{{item.add_time | dateFormat}}</div>
-                <div class="titleTop-r">点击：{{item.click}}</div>
+                <div class="titleTop-l">发表时间：{{ item.add_time | dateFormat }}</div>
+                <div class="titleTop-r">点击：{{ item.click }}</div>
               </div>
             </div>
           </div>
@@ -24,18 +24,18 @@
       </div>
     </van-pull-refresh>
     <!-- 数据 -->
-
   </div>
 </template>
 
 <script>
+// import { mapState } from 'vuex'
 export default {
   name: 'newList',
   data () {
     return {
       list: [],
       isLoading: true,
-      show: false,
+      show: false
     }
   },
   created () {
@@ -46,17 +46,18 @@ export default {
     // 获取数据
     async getList () {
       const { data: res } = await this.$http.get('/api/getnewslist')
-      console.log(res.message);
+      console.log(res.message)
       this.list = res.message
     },
+
     // 刷新
     onRefresh () {
       setTimeout(() => {
-        this.$toast('刷新成功');
+        this.$toast('刷新成功')
         this.isLoading = false
         this.show = true
         this.getList()
-      }, 1000);
+      }, 1000)
     },
     // 跳转页面
     skip (id) {
@@ -116,4 +117,19 @@ export default {
   font-weight: 700;
 }
 
+.titleTop {
+  height: 30px;
+}
+.titleTop-l {
+  float: left;
+  line-height: 30px;
+  font-size: 12px;
+  color: #226aff;
+}
+.titleTop-r {
+  float: right;
+  line-height: 30px;
+  font-size: 12px;
+  color: #226aff;
+}
 </style>
