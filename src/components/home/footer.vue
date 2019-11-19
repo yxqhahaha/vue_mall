@@ -13,9 +13,43 @@ export default {
     return {
       active: 0
     }
+<<<<<<< HEAD
   }
 }
 </script>
 <style lang="css" scoped>
 
+=======
+  },
+  methods: {
+  //   changeURL (url) {
+  //       window.localStorage.setItem('active',this.active)
+  //   }
+    tabChange () {
+    }
+  },
+  created () {
+  },
+  mounted() {
+    // if(window.localStorage.getItem('active')){
+    //     this.active=window.localStorage.getItem('active')
+    // }else{
+    //     this.active=0
+
+    // }
+    console.log(this.active)
+    //       this.active = window.localStorage.getItem('active');
+    // console.log(this.active);
+
+  },
+  computed: {
+  },
+  component: {
+
+  }
+
+}
+</script>
+<style lang="css" scoped>
+>>>>>>> develop
 </style>

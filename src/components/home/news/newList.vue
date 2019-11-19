@@ -49,7 +49,6 @@ export default {
       console.log(res.message)
       this.list = res.message
     },
-
     // 刷新
     onRefresh () {
       setTimeout(() => {

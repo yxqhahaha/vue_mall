@@ -10,7 +10,8 @@ export default new Vuex.Store({
     list: [],
     feedList: [],
     localSrg: JSON.parse(localStorage.getItem('historysearch')) || [],
-    message: []
+    message: [],
+    goodsId: 1
   },
   mutations: {
     add (state, val) {
@@ -32,6 +33,12 @@ export default new Vuex.Store({
     },
     getMsg (state, res) {
       state.message = res.data.message
+    },
+    getGoodsId (state, id) {
+      state.goodsId = id
+    },
+    getShopCarList (state, goodsId) {
+      state.shopCarList.push(goodsId)
     }
   },
   actions: {

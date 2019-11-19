@@ -5,7 +5,6 @@ import store from './store'
 import axios from 'axios'
 import './plugins/vant.js'
 import './css/globel.css'
-
 Vue.config.productionTip = false
 axios.defaults.baseURL = 'http://www.liulongbin.top:3005'
 
