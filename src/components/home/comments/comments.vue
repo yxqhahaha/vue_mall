@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main-box">
       <!-- 评论区域 -->
       <div class="base">
         <h4>发表评论</h4>
@@ -60,7 +60,7 @@ export default {
     },
     // 点击提交评论信息
     async addClick () {
-      const { data: res } = await this.$http.post(`/api/postcomment/${this.newId}`, { artid: this.newId, content: this.content })
+      // const { data: res } = await this.$http.post(`/api/postcomment/${this.newId}`, { artid: this.newId, content: this.content })
       this.add()
       this.newFeed()
       this.content = ''
@@ -76,6 +76,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
+  .main-box {
+    margin-top: 45px;
+  }
   * {
     margin: 0;
     padding: 0;

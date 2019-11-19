@@ -1,6 +1,5 @@
 <template>
-  <div>
-
+  <div class="main-box">
     <div class="goodsImg">
       <!--  商品图片展示  -->
       <van-swipe :autoplay="3000" touchable>
@@ -57,7 +56,8 @@ export default {
       goodsSwipe: [],
       // 购买数量的最大值最小值
       value: 1,
-      max: 1
+      max: 1,
+      goodsId: 1
     }
   },
   created () {
@@ -66,26 +66,23 @@ export default {
   methods: {
     // 获取商品详情页面数据
     async getGoodsDetail () {
-      let id = this.getId
-      console.log(id)
+      this.goodsId = this.$store.state.goodsId
       // 发送请求 获取商品详情页数据 /api/getimageInfo/:imgid
-      const { data: res } = await this.$http.get(`/api/goods/getinfo/${id}`)
+      const { data: res } = await this.$http.get(`/api/goods/getinfo/${this.goodsId}`)
       this.goodsInfo = res.message[0]
       this.max = this.goodsInfo.stock_quantity
-      console.log(this.goodsInfo)
-
+      // console.log(this.goodsInfo)
       // 发送请求获取商品详情页 轮播图
-      const { data: res2 } = await this.$http.get(`/api/getthumimages/${id}`)
+      const { data: res2 } = await this.$http.get(`/api/getthumimages/${this.goodsId}`)
       if (res2.status !== 0) {
         this.$toast({
           message: '加载图片中'
         })
       }
       this.goodsSwipe = res2.message
-      console.log(res2)
+      // console.log(res2)
     },
     onChange (value) {
-      console.log(this.max)
       if (value >= this.goodsInfo.stock_quantity) {
         this.value = this.goodsInfo.stock_quantity
         this.$toast({
@@ -97,38 +94,35 @@ export default {
     // 加入购物车
     async addShopCar () {
       // 获取store->state中购物车数组的值
-      // 将当前商品的id 传入数组中
-      this.$store.state.shopCarList.push(this.getId)
-      this.$toast({
-        message: '已加入购物车'
-      })
+      for (let i = 0; i < this.value; i++) {
+        // 将当前商品的id 传入数组中
+        this.$store.commit('getShopCarList', this.goodsId)
+        this.$toast({
+          message: '已加入购物车'
+        })
+      }
+      // console.log(this.$store.state.shopCarList)
     },
     // 跳转到商品图文介绍页面
     toGoodsDesc () {
-      let id = this.getId
-      this.$router.push(`/goodsdesc/${id}`)
+      // let id = this.getId
+      this.$router.push(`/goodsdesc/${this.goodsId}`)
     },
     // 跳转到商品评论
     toGoodsComment () {
-      let id = this.getId
-      // this.$router.push(`/news/detail/${id}`)
+      let id = this.goodsId
       this.$router.push({ path: '/goodscomments/', query: { id } })
     }
   },
   computed: {
-    // 获取id
-    getId () {
-      // 根据当前url来获取id
-      let id = this.$route.path.split('/')
-      id = id[id.length - 1]
-      return id
-      // return this.$route.path.split('/')[id.length - 1];
-    }
   }
 }
 </script>
 
 <style lang="less" scoped>
+  .main-box {
+    margin-top: 45px;
+  }
   .goodsImg {
     height: 200px;
     border: 1px solid #ccc;
@@ -203,6 +197,7 @@ export default {
     margin: 10px 5px;
     padding: 10px;
     .params_title {
+      margin: 15px 0;
       font-size: 16px;
       padding-bottom: 10px ;
       border-bottom: 1px solid #ccc;
@@ -212,6 +207,7 @@ export default {
       color: #8f8f94;
       border-bottom: 1px solid #ccc;
       p {
+        margin: 10px 0;
         padding-left: 10px;
       }
     }
