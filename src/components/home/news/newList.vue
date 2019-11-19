@@ -29,11 +29,12 @@
 </template>
 
 <script>
-// import { mapState } from 'vuex'
+import { mapMutations } from 'vuex'
 export default {
   name: 'newList',
   data () {
     return {
+      id: 1,
       list: [],
       isLoading: true,
       show: false
@@ -44,11 +45,13 @@ export default {
     this.getList()
   },
   methods: {
+    ...mapMutations(['getNewsId']),
     // 获取数据
     async getList () {
       const { data: res } = await this.$http.get('/api/getnewslist')
       console.log(res.message)
       this.list = res.message
+      this.getNewsId(this.id)
     },
     // 刷新
     onRefresh () {
@@ -61,9 +64,10 @@ export default {
     },
     // 跳转页面
     skip (id) {
+      this.id = id
       // this.$emit('id', id)
       // this.$router.push(`/news/detail/${id}`)
-      this.$router.push({ path: '/news/detail', query: { id } })
+      this.$router.push({ path: `/news/detail/${this.id}` })
     }
   },
   mounted () {

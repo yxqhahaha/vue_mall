@@ -11,10 +11,12 @@
         </div>
       </div>
     </div>
+    <comments></comments>
   </div>
 </template>
 
 <script>
+import comments from '../comments/comments'
 export default {
   name: 'detail',
   data () {
@@ -37,15 +39,17 @@ export default {
   },
   created () {
     this.detailList()
-    this.newFeed()
   },
   methods: {
     // 获取数据
     async detailList () {
-      this.newId = this.$route.query.id
+      this.newId = this.$route.params.id
       const { data: res } = await this.$http.get('/api/getnew/' + this.newId)
       this.list = res.message
     }
+  },
+  components: {
+    comments
   }
 }
 </script>

@@ -27,7 +27,7 @@
         <img src="../../../public/menu/menu4.png" class="gridIcon">
         <p class="nav">留言反馈</p>
       </van-grid-item>
-      <van-grid-item>
+      <van-grid-item @click="changeURL('/video')">
         <img src="../../../public/menu/menu5.png" class="gridIcon">
         <p class="nav">视频专区</p>
       </van-grid-item>

@@ -15,6 +15,7 @@ import photoInfo from '../components/home/photo/photoInfo.vue'
 import addgoods from '../components/home/goods/addgoods.vue'
 import comments from '../components/home/comments/comments'
 import contactUs from '../components/home/contact/contactUs'
+import video from '../components/home/video/video'
 Vue.use(VueRouter)
 
 const routes = [
@@ -48,7 +49,7 @@ const routes = [
     component: goodsDesc
   },
   {
-    path: '/goodscomments/',
+    path: '/goodscomments/:id',
     name: 'comments',
     component: comments
   },
@@ -78,7 +79,7 @@ const routes = [
     component: search
   },
   {
-    path: '/news/detail',
+    path: '/news/detail/:id',
     name: 'detail',
     component: Detail
   },
@@ -91,6 +92,11 @@ const routes = [
     path: '/contactUs',
     name: 'contactUs',
     component: contactUs
+  },
+  {
+    path: '/video',
+    name: 'video',
+    component: video
   }
 ]
 

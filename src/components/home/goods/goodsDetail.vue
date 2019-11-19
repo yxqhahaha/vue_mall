@@ -111,7 +111,7 @@ export default {
     // 跳转到商品评论
     toGoodsComment () {
       let id = this.goodsId
-      this.$router.push({ path: '/goodscomments/', query: { id } })
+      this.$router.push({ path: `/goodscomments/${id}` })
     }
   },
   computed: {

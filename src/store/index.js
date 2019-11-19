@@ -11,7 +11,9 @@ export default new Vuex.Store({
     feedList: [],
     localSrg: JSON.parse(localStorage.getItem('historysearch')) || [],
     message: [],
-    goodsId: 1
+    goodsId: 1,
+    newsId: 1,
+    videoId: 1
   },
   mutations: {
     add (state, val) {
@@ -36,6 +38,12 @@ export default new Vuex.Store({
     },
     getGoodsId (state, id) {
       state.goodsId = id
+    },
+    getNewsId (state, id) {
+      state.newsId = id
+    },
+    getVideoId (state, id) {
+      state.videoId = id
     },
     getShopCarList (state, goodsId) {
       state.shopCarList.push(goodsId)

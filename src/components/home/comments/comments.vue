@@ -50,7 +50,7 @@ export default {
   methods: {
     // 拿到评论数据
     async newFeed () {
-      this.newId = this.$route.query.id
+      this.newId = this.$route.params.id
       const { data: res } = await this.$http.get(`/api/getcomments/${this.newId}?pageindex=${this.counet}`)
       this.$store.commit('add', res.message)
     },
@@ -60,7 +60,8 @@ export default {
     },
     // 点击提交评论信息
     async addClick () {
-      // const { data: res } = await this.$http.post(`/api/postcomment/${this.newId}`, { artid: this.newId, content: this.content })
+      const { data: res } = await this.$http.post(`/api/postcomment/${this.newId}`, { artid: this.newId, content: this.content })
+      console.log(res)
       this.add()
       this.newFeed()
       this.content = ''
@@ -131,7 +132,7 @@ export default {
     line-height: 35px;
     text-indent: 2em;
     font-size: 12px;
-    margin-top: 10px 0;
+    margin-top: 10px;
     text-align: left;
   }
 
