@@ -135,7 +135,6 @@ export default {
     margin-top: 10px;
     text-align: left;
   }
-
   .title-l {
     float: left;
     margin-right: 6px;
